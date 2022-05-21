@@ -14,6 +14,8 @@ const usersRouter = require("./routes/users");
 
 const app = express();
 
+//--------------------------------------------------------------------------------
+
 // ANCHOR Mongo client connection
 MongoClient.connect("mongodb://localhost", (err, client) => {
 	if (err) {
@@ -24,6 +26,8 @@ MongoClient.connect("mongodb://localhost", (err, client) => {
 	const users = db.collection("users");
 	app.locals.users = users;
 });
+
+//------------------------------------------------------------------
 
 //ANCHOR This is the Passport function
 passport.use(
@@ -54,7 +58,10 @@ passport.deserializeUser((id, done) => {
 	done(null, { id });
 });
 
-// ANCHOR view engine
+// -----------------------------------------------------
 
+// ANCHOR view engine
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+
+//-----------------------------------------------------
