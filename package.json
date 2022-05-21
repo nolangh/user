@@ -1,0 +1,20 @@
+{
+  "name": "user",
+  "version": "1.0.0",
+  "description": "user management app for school",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nolangh/user.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nolangh/user/issues"
+  },
+  "homepage": "https://github.com/nolangh/user#readme"
+}
