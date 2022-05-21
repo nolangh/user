@@ -27,12 +27,34 @@ MongoClient.connect("mongodb://localhost", (err, client) => {
 
 //ANCHOR This is the Passport function
 passport.use(
-	new strategy((username, password, done) => {
-		app.locals.users.findOne({ username }); //NOTE Possibly alter findOne as a way to pull more than the current user
+	new Strategy((username, password, done) => {
+		app.locals.users.findOne({ username }, (err, user) => {
+			if (err) {
+				return done(err);
+			}
+
+			if (!user) {
+				return done(null, false);
+			}
+
+			if (user.password != authUtils.hashPassword(password)) {
+				return done(null, false);
+			}
+
+			return done(null, user);
+		});
 	})
 );
 
-// ANCHOR view engine ish
+passport.serializeUser((user, done) => {
+	done(null, user._id);
+});
+
+passport.deserializeUser((id, done) => {
+	done(null, { id });
+});
+
+// ANCHOR view engine
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
