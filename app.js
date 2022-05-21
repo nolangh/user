@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 
 const indexRouter = rquire("./routes/index");
 const usersRouter = require("./routes/users");
+const { hasSubscribers } = require("diagnostics_channel");
 
 const app = express();
 
@@ -65,3 +66,5 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
 //-----------------------------------------------------
+
+// ANCHOR partials for HandleBars
