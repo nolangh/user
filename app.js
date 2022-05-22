@@ -1,17 +1,28 @@
 // TODO: possibly add this back in const logger = require('morgan')
-const createError = require("https-erros");
+const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
-const cookieParser = require("cookieParser");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+
+// New stuff to add
+//---------------------------------------------------
+const hbs = require("hbs");
 const MongoClient = require("mongodb").MongoClient;
 const passport = require("passport");
-const strategy = require("passport-local");
+const Strategy = require("passport-local").Strategy;
+const authUtils = require("./utils/auth");
 const session = require("express-session");
 const flash = require("connect-flash");
+// --------------------------------------------------
 
-const indexRouter = rquire("./routes/index");
+const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const { hasSubscribers } = require("diagnostics_channel");
+
+// Add new routes
+// --------------------------------------------------
+const authRouter = require("./routes/auth");
+// --------------------------------------------------
 
 const app = express();
 
