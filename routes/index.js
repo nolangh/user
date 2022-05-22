@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// ANCHOR Create custom homepage
+// Create custom homepage
 // --------------------------------------------------
 router.get("/", function (req, res, next) {
 	const users = req.app.locals.users;

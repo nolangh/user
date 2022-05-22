@@ -1,4 +1,3 @@
-// TODO: possibly add this back in const logger = require('morgan')
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -29,15 +28,18 @@ const app = express();
 //--------------------------------------------------------------------------------
 
 // ANCHOR Mongo client connection
-MongoClient.connect("mongodb://localhost", (err, client) => {
-	if (err) {
-		throw err;
-	}
+MongoClient.connect(
+	"mongodb+srv://nolangh:nosyad55@cluster0.g6tox.mongodb.net/?retryWrites=true&w=majority",
+	(err, client) => {
+		if (err) {
+			throw err;
+		}
 
-	const db = client.db("user-profiles");
-	const users = db.collection("users");
-	app.locals.users = users;
-});
+		const db = client.db("user-profiles");
+		const users = db.collection("users");
+		app.locals.users = users;
+	}
+);
 
 //------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
 	"description": "user management app for school",
 	"main": "index.js",
 	"scripts": {
-		"start": "node ./bin/www"
+		"start": "nodemon ./bin/www"
 	},
 	"repository": {
 		"type": "git",
@@ -25,9 +25,12 @@
 		"express-flash": "^0.0.2",
 		"express-session": "^1.17.3",
 		"hbs": "^4.2.0",
+		"http-errors": "^2.0.0",
 		"mongodb": "^4.6.0",
+		"mongoose": "^6.3.4",
 		"morgan": "^1.10.0",
 		"nodemon": "^2.0.16",
+		"objectid": "^3.2.1",
 		"passport": "^0.6.0",
 		"passport-local": "^1.0.0"
 	}

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ObjectID = require("mongodb").ObjectID;
 
-// ANCHOR Configure user account profile edit
+// Configure user account profile edit
 // --------------------------------------------------
 router.get("/", function (req, res, next) {
 	if (!req.isAuthenticated()) {
@@ -21,7 +21,7 @@ router.get("/", function (req, res, next) {
 });
 // --------------------------------------------------
 
-// ANCHOR Get public profile for any user
+// Get public profile for any user
 // --------------------------------------------------
 router.get("/:username", (req, res, next) => {
 	const users = req.app.locals.users;
@@ -37,7 +37,7 @@ router.get("/:username", (req, res, next) => {
 });
 // --------------------------------------------------
 
-// ANCHOR Handle updating user profile data
+// Handle updating user profile data
 // --------------------------------------------------
 router.post("/", (req, res, next) => {
 	if (!req.isAuthenticated()) {

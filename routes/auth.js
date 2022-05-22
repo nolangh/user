@@ -3,39 +3,39 @@ const router = express.Router();
 const authUtils = require("../utils/auth");
 const passport = require("passport");
 const flash = require("connect-flash");
-//----------------------------------------
 
-//ANCHOR Login page
+// Create login page
+// --------------------------------------------------
 router.get("/login", (req, res, next) => {
-	const message = req.flash();
-	res.render("login", { message });
+	const messages = req.flash();
+	res.render("login", { messages });
 });
-//-------------------------------------------------
+// --------------------------------------------------
 
-//ANCHOR Handles the login request
+// Handle login request
+// --------------------------------------------------
 router.post(
 	"/login",
 	passport.authenticate("local", {
 		failureRedirect: "/auth/login",
-		failureFlash: "Wrong username of password",
+		failureFlash: "Wrong username or password",
 	}),
 	(req, res, next) => {
 		res.redirect("/users");
 	}
 );
+// --------------------------------------------------
 
-//---------------------------------------------------------
-
-//ANCHOR  Registration page
+// Create register page
+// --------------------------------------------------
 router.get("/register", (req, res, next) => {
-	const message = req.flash();
-	res.render("register", { message });
+	const messages = req.flash();
+	res.render("register", { messages });
 });
+// --------------------------------------------------
 
-//-------------------------------------------------------------------
-
-//ANCHOR Handle register request
-
+// Handle register request
+// --------------------------------------------------
 router.post("/register", (req, res, next) => {
 	const registrationParams = req.body;
 	const users = req.app.locals.users;
